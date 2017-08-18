@@ -1,0 +1,5 @@
+What is difference between NACL and SecurityGroups in AWS?
+NACL will restrict the traffic at the subnet level where you make inbound and outbound rules accordingly, Security Group will restrict the traffic at the instance level where you specify only inbound rules.
+
+what are the best practices in maintaing Ec2 instances?
+
