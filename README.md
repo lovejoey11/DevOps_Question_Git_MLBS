@@ -1,4 +1,4 @@
-# DevOps_Question_Git_MLBS
+# DevOps Question Git
 ---
 :tada::tada::tada:
 
@@ -7,9 +7,9 @@ Guys, **Keep Calm, Carry On**! :smile:
 
 
 > Pull/Fork this repository and make yourself a new local branch, once you done your part, make a pull request to my main repo
-
+>
 > If you know how git for works, feel free to use it.
-
+>
 > If you want to directly push to this git, then send me your GitHub Username.
 
 Here are some good tutorial for how to use git to collaborate
