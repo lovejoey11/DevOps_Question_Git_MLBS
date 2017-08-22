@@ -14,6 +14,9 @@ Guys, **Keep Calm, Carry On**! :smile:
 
 Slack team invitation [Link](https://join.slack.com/t/marlabsdevopsteam/shared_invite/MjI4NzYyOTE2ODUyLTE1MDMwNzk5NDctNGEwNDE2ZGRkMg)
 
+Please layout your document with markdown syntax. (For Better reading) :smile:
+Github Flavor Markdown Cheatsheet [Link](https://guides.github.com/features/mastering-markdown/)
+
 Here are some good tutorial for how to use git to collaborate
 
 [Git Tutorial](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)
