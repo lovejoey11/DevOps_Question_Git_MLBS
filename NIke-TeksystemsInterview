@@ -3,3 +3,53 @@ NACL will restrict the traffic at the subnet level where you make inbound and ou
 
 what are the best practices in maintaing Ec2 instances?
 
+-->Regularly Patch, update and secure the operating system and applications on your instance.
+-->Implement least permissive rules for your securitygroups.
+-->Use seperate Amazon EBS volumes for the operating system versus your data.
+-->Regularly backup your EBS volumes using Amazon EBS snapshots and create an AMI from your instance to save the configuration as a template for launching future instances.
+-->Deploy critical components of your application across multiple Availability Zones and replicate your data appropriately.
+
+What is VPC Peering?
+
+A VPC peering connection is a networking connection between two VPCs that enables you to route traffic between them using private IPv4 addresses or IPv6 addresses. Instances in either VPC can communicate with each other as if they are within the same network. You can create a VPC peering connection between your own VPCs, or with a VPC in another AWS account. In both cases, the VPCs must be in the same region.
+
+How to create an EC2 instance from aws CLI?
+
+First, create a new security group and add a rule that allows incoming traffic over port 22 for SSH. Note the security group ID for later use.
+
+$ aws ec2 create-security-group --group-name devenv-sg --description "security group for development environment in EC2"
+{
+    "GroupId": "sg-b018ced5"
+}
+$ aws ec2 authorize-security-group-ingress --group-name devenv-sg --protocol tcp --port 22 --cidr 0.0.0.0/0
+Replace the CIDR range in the above with the one that you will connect from for more security. You can use the aws ec2 describe-security-groups command to admire your handiwork.
+
+Next, create a key pair, which allows you to connect to the instance.
+
+$ aws ec2 create-key-pair --key-name devenv-key --query 'KeyMaterial' --output text > devenv-key.pem
+This command saves the contents of the key to a file called devenv-key.pem.
+
+Windows
+In the Windows Command Processor, enclose queries with double quotes instead of single quotes.
+On Linux, you will also need to change the file mode so that only you have access to the key file.
+
+$ chmod 400 devenv-key.pem
+Launch and Connect to the Instance
+
+Finally, you are ready to launch an instance and connect to it.
+
+To launch and connect to the instance
+
+Run the following command, replacing the security group ID output in the previous step.
+
+$ aws ec2 run-instances --image-id ami-6e1a0117 --security-group-ids sg-b018ced5 --count 1 --instance-type t2.micro --key-name devenv-key --query 'Instances[0].InstanceId'
+"i-0787e4282810ef9cf"
+The image ID ami-6e1a0117 specifies the Amazon Machine Image (AMI) that Amazon EC2 uses to bootstrap the instance. You can find image IDs for other regions and operating systems in the Amazon EC2 Management Console Launch Instance Wizard.
+
+Note
+T2 instance types require a VPC. If you don't have a default VPC, you can specify a subnet in a custom VPC with the --subnet-id option. If you don't have any VPCs, choose a different instance type such as t1.micro.
+The instance will take a few moments to launch. Once the instance is up and running, the following command will retrieve the public IP address that you will use to connect to the instance.
+
+$ aws ec2 describe-instances --instance-ids "i-0787e4282810ef9cf" --query 'Reservations[0].Instances[0].PublicIpAddress'
+"54.183.22.255"
+

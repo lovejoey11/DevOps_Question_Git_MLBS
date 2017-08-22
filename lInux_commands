@@ -1,0 +1,29 @@
+
+how will you check for openports and files in a linux machine?
+
+lsof -i or lsof
+
+how to check kernel messages?
+
+cat /var/log/messages
+
+or
+
+cd /var/log/syslog
+
+how to check kernel buffer size?
+
+dmesg
+
+or
+
+free -m
+
+how to run a process in background in linux?
+
+we can either use "nohup" command as nohup command-name & 
+
+or
+
+run a script as ./demo.sh &
+
