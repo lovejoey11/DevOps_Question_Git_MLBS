@@ -24,4 +24,4 @@ Here are some good tutorial for how to use git to collaborate
 
 [Git Merge Toturial](https://www.atlassian.com/git/tutorials/git-merge)
 
-[JJ Onsite Question](J&J Onsite question.md)
+[JJ Onsite Question](https://github.com/lovejoey11/DevOps_Question_Git_MLBS/blob/master/J%26J%20Onsite%20question.md)
